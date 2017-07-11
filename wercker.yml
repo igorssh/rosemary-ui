@@ -10,6 +10,11 @@ build:
 
 deploy:
   steps:
+    - script:
+        name: saving .npmrc
+        code: |
+          shopt -s xpg_echo
+          echo $NPMRC > ~/.npmrc
     - npm-install
     - script:
         name: version increment
@@ -22,6 +27,11 @@ deploy:
 
 gh-pages:
   steps:
+    - script:
+        name: saving .npmrc
+        code: |
+          shopt -s xpg_echo
+          echo $NPMRC > ~/.npmrc
     - npm-install
     - script:
         name: publish version
