@@ -10,6 +10,8 @@ build:
 
 deploy:
   steps:
+    - install-packages:
+        packages: git
     - script:
         name: saving .npmrc
         code: |
@@ -27,6 +29,8 @@ deploy:
 
 gh-pages:
   steps:
+    - install-packages:
+        packages: git
     - script:
         name: saving .npmrc
         code: |
