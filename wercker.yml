@@ -56,7 +56,7 @@ gh-pages:
           echo $NPMRC > ~/.npmrc
     - npm-install
     - script:
-        name: publish version
+        name: deploy to gh-pages
         code: |
           git checkout $WERCKER_GIT_BRANCH
           git reset --hard $WERCKER_GIT_COMMIT
