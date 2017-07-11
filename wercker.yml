@@ -21,6 +21,10 @@ deploy:
     - script:
         name: version increment
         code: |
+          git checkout $WERCKER_GIT_BRANCH
+          git reset --hard $WERCKER_GIT_COMMIT
+          git config --global user.name "C.T.Co SCM"
+          git config --global user.email "cscm@ctco.lv"
           npm set init.author.name "C.T.Co"
           npm set init.author.email "cscm@ctco.lv"
           npm set init.author.url "http://ctco.github.io"
@@ -40,4 +44,8 @@ gh-pages:
     - script:
         name: publish version
         code: |
+          git checkout $WERCKER_GIT_BRANCH
+          git reset --hard $WERCKER_GIT_COMMIT
+          git config --global user.name "C.T.Co SCM"
+          git config --global user.email "cscm@ctco.lv"
           npm run deploy
