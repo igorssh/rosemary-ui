@@ -7,3 +7,23 @@ build:
     - npm-install
     # A step that executes `npm test` command
     - npm-test
+
+deploy:
+  steps:
+    - npm-install
+    - script:
+        name: version increment
+        code: |
+          npm set init.author.name "C.T.Co"
+          npm set init.author.email "cscm@ctco.lv"
+          npm set init.author.url "http://ctco.github.io"
+          node_modules/grunt/bin/grunt bump
+          npm publish ./
+
+gh-pages:
+  steps:
+    - npm-install
+    - script:
+        name: publish version
+        code: |
+          npm run deploy
